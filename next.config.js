@@ -1,4 +1,5 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {}
+import stylexPlugin from '@stylexjs/nextjs-plugin';
 
-module.exports = nextConfig
+export default stylexPlugin({
+  rootDir: __dirname,
+})({});

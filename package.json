@@ -8,13 +8,16 @@
     "start": "next start",
     "lint": "eslint . --ext ts,tsx",
     "lint:fix": "eslint . --ext ts,tsx --fix"
-    },
+  },
   "dependencies": {
+    "@stylexjs/stylex": "^0.4.1",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18"
   },
   "devDependencies": {
+    "@stylexjs/eslint-plugin": "^0.4.1",
+    "@stylexjs/nextjs-plugin": "^0.4.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
