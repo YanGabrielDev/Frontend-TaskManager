@@ -5,7 +5,7 @@ export default function Login() {
         <div>
             <h1>login</h1>
             <Grid container>
-      <Grid  xlarge={2} large={4} medium={6} xsmall={12}>item 1</Grid>
+      <Grid  xlarge={2} large={4} medium={6} small={12}>item 1</Grid>
       <Grid  xlarge={2} large={4} medium={6} small={12}>item 2</Grid>
       <Grid  xlarge={2} large={4} medium={6} small={12}>item 3</Grid>
       <Grid  xlarge={2} large={4} medium={6} small={12}>item 4</Grid>
