@@ -1,5 +1,9 @@
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&family=Poppins:wght@400;500;600&family=Roboto&display=swap');
+
+@layer reset{
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 }

@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import React from 'react'
-import { Inter } from 'next/font/google'
 import './globals.css'
+import * as stylex from '@stylexjs/stylex'
+import { fonts } from './globalTokens.stylex'
 
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -17,7 +17,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body {...stylex.props(styles.body)}>{children}</body>
     </html>
   )
 }
+const styles = stylex.create({
+  body: {
+    fontFamily: fonts.roboto,
+    fontWeight: 300
+  }
+
+});
