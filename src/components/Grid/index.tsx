@@ -29,8 +29,8 @@ const styles = stylex.create({
     gridColumn:{
       '@layer': {
         '@media (max-width: 1536px)': `span ${xlarge}`,
-        '@media (max-width: 1200px)': `span ${large}`,
-        '@media (max-width: 900px)': `span ${medium}`,
+        '@media (max-width: 1280px)': `span ${large}`,
+        '@media (max-width: 768pxpx)': `span ${medium}`,
         '@media (max-width: 480px)': `span ${xsmall}`,
         '@media (max-width: 600px)': `span ${small}`,
       },
