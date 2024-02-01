@@ -1,18 +1,28 @@
-import { Grid } from "@/components/Grid";
-
+'use client'
+import { Grid } from '@/components/Grid'
+import wallpaper from '../../../public/wallpaper.png'
+import Image from 'next/image'
+import useMediaQuery from '@/hooks/useMediaQuery'
 export default function Login() {
-    return(
-        <div>
-            <h1>login</h1>
-            <Grid container>
-      <Grid  xlarge={2} large={4} medium={6} small={12}>item 1</Grid>
-      <Grid  xlarge={2} large={4} medium={6} small={12}>item 2</Grid>
-      <Grid  xlarge={2} large={4} medium={6} small={12}>item 3</Grid>
-      <Grid  xlarge={2} large={4} medium={6} small={12}>item 4</Grid>
-      <Grid  xlarge={2} large={4} medium={6} small={12}>item 5</Grid>
-      <Grid  xlarge={2} large={4} medium={6} small={12}>item 6</Grid>
+  const hidenWallpaperOnMobile = useMediaQuery('(min-width: 1281px)')
+  return (
+    <Grid container>
+      {hidenWallpaperOnMobile && (
+        <Grid xlarge={8}>
+          <Image
+            src={wallpaper}
+            alt="Pessoas em um fundo branco organizando um quadro de tarefas"
+            style={{
+              width: '100%',
+              height: '99vh',
+            }}
+          />
+        </Grid>
+      )}
 
-     </Grid>
-        </div>
-    )
+      <Grid xlarge={4} large={12} medium={12} small={12}>
+        <span>fsdg</span>
+      </Grid>
+    </Grid>
+  )
 }

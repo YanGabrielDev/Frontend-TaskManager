@@ -1,55 +1,74 @@
-import * as React from 'react';
-import * as stylex from '@stylexjs/stylex';
+import * as React from 'react'
+import * as stylex from '@stylexjs/stylex'
 
-interface GridSizes{
-  xlarge?: number;
-  large?: number;
-  medium?: number;
-  small?: number;
-  xsmall?: number;
+interface GridSizes {
+  xlarge?: number
+  large?: number
+  medium?: number
+  small?: number
 }
 
-interface GridProps extends GridSizes{
-  children: React.ReactNode;
-  container?: boolean;
-  xlarge?: number;
-  large?: number;
-  medium?: number;
-  small?: number;
-  xsmall?: number;
-  gap?: "0.25rem" | "0.5rem" | "0.75rem" | "1rem";
+interface GridProps extends GridSizes {
+  children: React.ReactNode
+  container?: boolean
+  xlarge?: number
+  large?: number
+  medium?: number
+  small?: number
+  gap?: '0.25rem' | '0.5rem' | '0.75rem' | '1rem'
 }
+
+const flexWidth = (value?: number) => (value ? (100 / 12) * value : 100)
 
 const styles = stylex.create({
   container: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(12, 1fr)',
+    display: 'flex',
+    width: '100%',
   },
-  responsive : ( xlarge?: number, large?: number, medium?: number, small?: number, xsmall?: number) => ({
-    gridColumn:{
-      '@layer': {
-        '@media (max-width: 1536px)': `span ${xlarge}`,
-        '@media (max-width: 1280px)': `span ${large}`,
-        '@media (max-width: 768pxpx)': `span ${medium}`,
-        '@media (max-width: 480px)': `span ${xsmall}`,
-        '@media (max-width: 600px)': `span ${small}`,
-      },
-    }
-    }),
-    gap: (gap: string) => ({ gap: gap }) 
+  responsive: (
+    restColumns: number,
+    xlarge?: number,
+    large?: number,
+    medium?: number,
+    small?: number,
+  ) => ({
+    width: {
+      // eslint-disable-next-line @stylexjs/valid-styles
+      '@media (min-width: 600px)': `${flexWidth(small)}%`,
+      '@media (min-width: 768pxpx)': `${flexWidth(medium)}%`,
+      '@media (min-width: 1280px)': `${flexWidth(large)}%`,
+      '@media (min-width: 1536px)': `${flexWidth(xlarge)}%`,
+    },
+  }),
+  gap: (gap: string) => ({ gap: gap }),
 })
 
-export const Grid = ({ children, container, gap, large, medium, small, xlarge, xsmall }: GridProps) => {
-  const containerStyle = container ? styles.container : {};
-  const gapStyle = gap ? styles.gap(gap) : {};
+export const Grid = ({
+  children,
+  container,
+  gap,
+  large,
+  medium,
+  small,
+  xlarge,
+}: GridProps) => {
+  const containerStyle = container ? styles.container : {}
+  const gapStyle = gap ? styles.gap(gap) : {}
+  const breakpoints = [xlarge, large, medium, small]
+  const restColumns = breakpoints.find((br) => br !== undefined)
+  const smallSize = small ?? restColumns
 
   return (
-    <div {...stylex.props(
-      containerStyle,
-      !container ? styles.responsive(xlarge, large, medium, small, xsmall) : {},
-      gapStyle,
-       )}>
+    <div
+      {...stylex.props(
+        containerStyle,
+        !container
+          ? styles.responsive(restColumns!, xlarge, large, medium, smallSize)
+          : {},
+        gapStyle,
+      )}
+    >
       {children}
     </div>
-  );
-};
+  )
+}

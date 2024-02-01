@@ -2,8 +2,7 @@ import type { Metadata } from 'next'
 import React from 'react'
 import './globals.css'
 import * as stylex from '@stylexjs/stylex'
-import { fonts } from './globalTokens.stylex'
-
+import { fonts } from '../styles/globalTokens.stylex'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -24,7 +23,6 @@ export default function RootLayout({
 const styles = stylex.create({
   body: {
     fontFamily: fonts.roboto,
-    fontWeight: 300
-  }
-
-});
+    fontWeight: 300,
+  },
+})
