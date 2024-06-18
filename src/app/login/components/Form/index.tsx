@@ -3,6 +3,8 @@ import * as stylex from '@stylexjs/stylex'
 import { formStyles } from './styles'
 
 export const Form = () => {
+  console.log('teste');
+  
   return (
     <div {...stylex.props(formStyles.base)}>
     <form
