@@ -1,7 +1,10 @@
 import { Box } from '@/components/Box'
+import * as stylex from '@stylexjs/stylex'
+import { formStyles } from './styles'
 
 export const Form = () => {
   return (
+    <div {...stylex.props(formStyles.base)}>
     <form
       onSubmit={(e) => {
         e.preventDefault(), console.log(e)
@@ -13,5 +16,6 @@ export const Form = () => {
         <button type="submit" style={{ display: '' }}></button>
       </Box>
     </form>
+    </div>
   )
 }
